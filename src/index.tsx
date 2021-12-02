@@ -1,2 +1,2 @@
-export * from './components/Joe/';
-export * from './components/Button/';
+export * from './components/Joe';
+export * from './components/Button';

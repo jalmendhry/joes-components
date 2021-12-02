@@ -25,13 +25,13 @@ interface StyleProps {
   scale: number;
 }
 
-const StyledButton = styled.button<StyleProps>`
+const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem;
   border: 0;
-  color: #fff;
+  color: red;
   cursor: pointer;
   font-weight: 700;
   min-width: 80px;
@@ -39,5 +39,5 @@ const StyledButton = styled.button<StyleProps>`
 
 
   padding: ${(props: StyleProps) => (`${props.scale * 0.5}rem ${props.scale * 1}rem`)};
-  background-color: ${(props: StyleProps) => (props.bgColour)};
+  background-color: orange;
 `
