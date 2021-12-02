@@ -1,43 +1,32 @@
 import React from "react";
-import styled from 'styled-components';
 
 export interface ButtonProps {
-  text: string;
+  children: React.ReactNode,
   bgColour?: string;
   size?: 'sm' | 'md' | 'lg';
   handleClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 
-export const Button = ({text, bgColour = 'red', size = 'sm', handleClick} : ButtonProps) => {
+export const Button = ({children, bgColour = 'red', size = 'sm', handleClick} : ButtonProps) => {
   let scale = 1
   if (size === "sm") scale = 0.75
   if (size === "lg") scale = 1.5
 
+  const style = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    minWidth: '80px',
+    height: '44px',
+    fontWeight: 700,
+    backgroundColor: bgColour,
+    padding: `${scale * 0.5}rem ${scale * 1}rem`,
+    border: 0,
+  }
+
   return (
-    <StyledButton bgColour={bgColour} scale={scale} onClick={handleClick}>{text}</StyledButton>
+    <button style={style} onClick={handleClick}>{children}</button>
   )
 }
-
-
-interface StyleProps {
-  bgColour: string;
-  scale: number;
-}
-
-const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
-  border: 0;
-  color: red;
-  cursor: pointer;
-  font-weight: 700;
-  min-width: 80px;
-  height: 44px;
-
-
-  padding: ${(props: StyleProps) => (`${props.scale * 0.5}rem ${props.scale * 1}rem`)};
-  background-color: orange;
-`
