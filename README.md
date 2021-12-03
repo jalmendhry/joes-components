@@ -1,3 +1,25 @@
+# Local dev
+
+Running locally can cause issues with multiple versions of react/styled-components producing an error relating to invalid hook calls.
+
+https://github.com/facebook/react/issues/14257
+
+To fix this locally, run the following:
+
+```
+  cd YOUR_PROJECT/
+    yarn install
+
+  cd joes-components/
+    yarn install
+    npm link ../path/to/your-project/node_modules/react
+    npm link ../path/to/your-project/node_modules/styled-components
+    yarn link
+
+  cd YOUR_PROJECT/
+    yarn link @jalmendhry1/joes-components
+```
+
 # TSDX React w/ Storybook User Guide
 
 Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
@@ -116,7 +138,7 @@ declare var __DEV__: boolean;
 
 // inside your code...
 if (__DEV__) {
-  console.log('foo');
+  console.log("foo");
 }
 ```
 

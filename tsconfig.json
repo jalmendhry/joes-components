@@ -13,6 +13,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "lib": [
+      "es2016",
+      "dom",
+      "es5"
+    ]
   }
 }

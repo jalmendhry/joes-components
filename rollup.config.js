@@ -13,28 +13,21 @@ const packageJson = require("./package.json");
 
 export default [
   {
-    input: "./src/index.tsx",
-    // output: [
-    //   {
-    //     file: "dist/index.js",
-    //     format: "cjs",
-    //   },
-    //   {
-    //     file: "dist/index.es.js",
-    //     format: "es",
-    //     exports: "named",
-    //   },
-    // ],
+    input: "./src/index.ts",
     output: [
       {
         file: packageJson.main,
         format: "cjs",
         sourcemap: true,
+        exports: "named",
+        strict: false,
       },
       {
         file: packageJson.module,
         format: "esm",
         sourcemap: true,
+        exports: "named",
+        strict: false,
       },
     ],
     plugins: [
@@ -44,10 +37,21 @@ export default [
         plugins: [],
         minimize: true,
       }),
+
       babel({
         exclude: "node_modules/**",
-        presets: ["@babel/preset-react"],
+        presets: [
+          "es2017",
+          "es2016",
+          [
+            "es2015",
+            {
+              modules: false,
+            },
+          ],
+        ],
       }),
+
       typescript({
         tsconfig: "./tsconfig.json",
       }),
@@ -59,7 +63,7 @@ export default [
   },
   {
     input: "dist/esm/types/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    output: [{ file: "dist/index.d.ts" }],
     plugins: [dts()],
     external: [/\.(css|less|scss)$/],
   },
