@@ -13,7 +13,7 @@ export interface ButtonProps {
 const Button = ({children, bgColour = 'red', size = 'sm', handleClick} : ButtonProps) => {
 
   useEffect(() => {
-    console.log("Button component has rendered!")
+    console.log("Button component has rendered! Hello world")
   }, [])
 
   let scale = 1
@@ -26,7 +26,7 @@ const Button = ({children, bgColour = 'red', size = 'sm', handleClick} : ButtonP
     justifyContent: 'center',
     cursor: 'pointer',
     minWidth: '80px',
-    height: '44px',
+    minHeight: '44px',
     fontWeight: 700,
     backgroundColor: bgColour,
     padding: `${scale * 0.5}rem ${scale * 1}rem`,
@@ -38,8 +38,6 @@ const Button = ({children, bgColour = 'red', size = 'sm', handleClick} : ButtonP
   )
 }
 
-const StyledButton = styled.button`
-  max-width: 10px;
-`
+const StyledButton = styled.button``
 
 export default Button;

@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "@jalmendhry1/joes-components",
   "author": "Joe Al-mendhry",
   "license": "MIT",
@@ -11,8 +11,9 @@
   ],
   "scripts": {
     "dev": "npm run build && npm run watch",
-    "watch": "onchange 'src/**/*' -- rollup -c",
-    "build": "npm run clean && rollup -c",
+    "build": "npm run clean && rollup -c && npm run yalc-push",
+    "watch": "onchange 'src/**/*' -- npm run yalc-push",
+    "yalc-push": "rollup -c && yalc push",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "clean": "rimraf dist",
@@ -51,12 +52,14 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.5.2",
     "sass": "^1.44.0",
     "sass-loader": "^12.3.0",
     "style-loader": "^3.3.1",
     "styled-components": "4.4.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "yalc": "^1.0.0-pre.53"
   },
   "peerDependencies": {
     "react": "^17.0.2",
